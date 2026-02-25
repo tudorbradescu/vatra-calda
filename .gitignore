@@ -1,0 +1,10 @@
+node_modules
+dist
+.vite
+*.local
+.DS_Store
+
+# Root-level source photos (copies are in public/photos/)
+/*.jpg
+/*.png
+/Screenshot*.png

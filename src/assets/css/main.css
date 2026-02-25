@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --color-brand: #c8956c;
+  --color-brand-light: #d4a67d;
+  --color-brand-dark: #b07c55;
+  --color-brand-glow: oklch(from #c8956c l c h / 0.15);
+
+  --color-surface-primary: #1a3a3a;
+  --color-surface-secondary: #142e2e;
+  --color-surface-card: #1e4242;
+  --color-surface-card-hover: #245050;
+  --color-surface-light: #faf6f0;
+  --color-surface-warm: #f5efe6;
+
+  --color-border-subtle: #2a4a4a;
+  --color-border-light: #e8e2d6;
+
+  --color-text-primary: #f5efe6;
+  --color-text-secondary: #c4b9a8;
+  --color-text-muted: #8a7f72;
+  --color-text-dark: #2d2520;
+  --color-text-dark-secondary: #6b5e52;
+
+  --color-star: #d4a04a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-surface-primary);
+  color: var(--color-text-primary);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slow-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(from #c8956c l c h / 0.4); }
+  50% { box-shadow: 0 0 20px 5px oklch(from #c8956c l c h / 0.15); }
+}
+
+@keyframes phone-pulse {
+  0% { box-shadow: 0 0 0 0 oklch(from #c8956c l c h / 0.5); }
+  70% { box-shadow: 0 0 0 15px oklch(from #c8956c l c h / 0); }
+  100% { box-shadow: 0 0 0 0 oklch(from #c8956c l c h / 0); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(0.5rem); }
+}
+
+/* ============================================
+   LIGHTBOX
+   ============================================ */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2.5rem;
+  color: #f5efe6;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  line-height: 1;
+  transition: opacity 0.2s;
+}
+.lightbox-close:hover { opacity: 0.7; }
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(26, 58, 58, 0.6);
+  border: 1px solid rgba(200, 149, 108, 0.3);
+  color: #f5efe6;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 10;
+}
+.lightbox-prev { left: 1rem; }
+.lightbox-next { right: 1rem; }
+.lightbox-prev:hover,
+.lightbox-next:hover { background: rgba(200, 149, 108, 0.3); }
+
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  user-select: none;
+}
+
+.lightbox-counter {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #c4b9a8;
+  font-size: 0.875rem;
+  font-family: var(--font-body);
+}
+
+.lightbox-fade-enter-active,
+.lightbox-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.lightbox-fade-enter-from,
+.lightbox-fade-leave-to {
+  opacity: 0;
+}
+
+/* ============================================
+   WHATSAPP / PHONE FLOAT ANIMATION
+   ============================================ */
+
+.phone-float-enter-active {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.phone-float-leave-active {
+  transition: all 0.3s ease-in;
+}
+.phone-float-enter-from {
+  opacity: 0;
+  transform: scale(0.5) translateY(20px);
+}
+.phone-float-leave-to {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-subtle);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand);
+}
