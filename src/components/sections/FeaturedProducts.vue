@@ -2,30 +2,32 @@
 import ScrollReveal from '@/components/ui/ScrollReveal.vue'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 
+const base = import.meta.env.BASE_URL
+
 const products = [
   {
     name: 'Paine Vatra Calda',
     description: 'Painea noastra emblematica cu maia',
     price: 'de la 13.20 lei',
-    image: '/photos/597218030_1410217691113079_6378883580775323616_n.jpg',
+    image: `${base}photos/597218030_1410217691113079_6378883580775323616_n.jpg`,
   },
   {
     name: 'Croissant cu Fistic',
     description: 'Plin de crema, interior si exterior',
     price: '20.50 lei',
-    image: '/photos/631534859_1459440092857505_5297671020940052993_n.jpg',
+    image: `${base}photos/631534859_1459440092857505_5297671020940052993_n.jpg`,
   },
   {
     name: 'Pasteis de Nata',
     description: 'Reteta autentica portugheza',
     price: '10 lei',
-    image: '/photos/625681126_1453424923459022_4433757549154012074_n.jpg',
+    image: `${base}photos/625681126_1453424923459022_4433757549154012074_n.jpg`,
   },
   {
     name: 'Focaccia Artizanala',
     description: 'Cu topping-uri diverse',
     price: 'de la 14 lei',
-    image: '/photos/625932023_1450649813736533_519456075658898453_n.jpg',
+    image: `${base}photos/625932023_1450649813736533_519456075658898453_n.jpg`,
   },
 ]
 </script>

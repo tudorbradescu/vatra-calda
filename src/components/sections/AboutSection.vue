@@ -2,6 +2,8 @@
 import ScrollReveal from '@/components/ui/ScrollReveal.vue'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 
+const base = import.meta.env.BASE_URL
+
 const stats = [
   { number: '50+', label: 'varietati' },
   { number: '6', label: 'zile pe saptamana' },
@@ -49,7 +51,7 @@ const stats = [
         <ScrollReveal direction="right">
           <div class="relative">
             <img
-              src="/photos/602874397_18086053463016595_3562191318699356913_n.jpg"
+              :src="`${base}photos/602874397_18086053463016595_3562191318699356913_n.jpg`"
               alt="Paine artizanala Vatra Calda"
               class="w-full rounded-2xl shadow-xl object-cover"
               loading="lazy"
